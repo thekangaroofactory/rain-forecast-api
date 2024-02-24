@@ -1,9 +1,27 @@
 from pathlib import Path
 
 import connexion
+from connexion.exceptions import OAuthProblem
+
+# -- Replace this by an env variable
+TOKEN_DB = {"asdf1234567890": {"uid": 100}}
 
 
-# referenced in the spec file(s): operationId: app.post_greeting
+def apikey_auth(token, required_scopes):
+    info = TOKEN_DB.get(token, None)
+
+    if not info:
+        raise OAuthProblem("Invalid token")
+
+    return info
+
+
+# referenced in the spec file (openapi): operationId: app.get_secret
+def get_secret(user) -> str:
+    return f"You are {user} and the secret is 'wbevuec'"
+
+
+# referenced in the spec file (swagger): operationId: app.post_greeting
 def post_greeting(name: str) -> str:
     return f"Hello {name}"
 
