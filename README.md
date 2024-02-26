@@ -1,12 +1,15 @@
-# rain-forecast-api
-Python / Flask API
+# Python / Connexion - Flask / API
 
 - Using connexion framework (to build the Flask API)
 - API key authentication
-- SQLAchemy + PostgreSQL database
+- SQLAlchemy + PostgresSQL database
+- Wrapped in Docker container
+- Served with gunicorn (using ASGI server / see connexion doc)
 
 
-Running:
+## Running:
+
+### From python
 
 `$ python app.py`
 
@@ -17,4 +20,23 @@ The hardcoded apikey is asdf1234567890.
 
 Test it out (in another terminal):
 
-`$ curl -H 'X-Auth: asdf1234567890' http://localhost:8080/openapi/openapi/resources`
+`curl -X 'GET' 'http://localhost:8080/openapi/resources' -H 'accept: application/json' -H 'X-Auth: asdf1234567890'`
+
+### In Docker
+
+Build the Docker image:
+
+`docker build -t template .`
+
+Run the image in a container:
+
+`docker run -name template-app -p 8000:8000 template`
+
+Now open your browser and go to http://localhost:8000/openapi/ui/ or 
+http://localhost:8000/swagger/ui/ to see the Swagger UI.
+
+The hardcoded apikey is asdf1234567890.
+
+Test it out (in Powershell >= 7):
+
+`curl -X 'GET' 'http://localhost:8000/openapi/resources' -H 'accept: application/json' -H 'X-Auth: asdf1234567890'`
