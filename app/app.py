@@ -1,11 +1,16 @@
+import os
 from pathlib import Path
 import datetime
+from dotenv import load_dotenv
 
 import connexion
 from connexion.exceptions import OAuthProblem
 import orm
 from connexion import NoContent
 
+
+# -- load env variable from .env file (dev.)
+load_dotenv()
 
 # -- Replace this by an env variable
 TOKEN_DB = {"asdf1234567890": {"uid": 100}}
@@ -64,16 +69,8 @@ def post_greeting(name: str) -> str:
     return f"Hello {name}"
 
 
-# os.environ['USER']
-
-
-dialect = "postgresql"
-db_user = "tilxuclh"
-db_pwd = "hK3oZSbfZC9FlNzC5nUvGp05_SbUc9yt"
-db_url = "abul.db.elephantsql.com"
-db_name = "tilxuclh"
-db_uri = dialect + "://" + db_user + ":" + db_pwd + "@" + db_url + "/" +db_name
-# "postgresql://tilxuclh:hK3oZSbfZC9FlNzC5nUvGp05_SbUc9yt@abul.db.elephantsql.com/tilxuclh"
+# get .env variable
+db_uri = os.environ['DB_URI']
 
 
 # logging.basicConfig(level=logging.INFO)
