@@ -13,7 +13,8 @@ from connexion import NoContent
 load_dotenv()
 
 # -- Replace this by an env variable
-TOKEN_DB = {"asdf1234567890": {"uid": 100}}
+# TOKEN_DB = {"asdf1234567890": {"uid": 100}}
+TOKEN_DB = {os.environ['API_TOKEN']: {"uid": 100}}
 
 db_session = None
 
