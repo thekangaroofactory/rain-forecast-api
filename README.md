@@ -16,7 +16,7 @@
 Now open your browser and go to http://localhost:8080/openapi/ui/ or 
 http://localhost:8080/swagger/ui/ to see the Swagger UI.
 
-The hardcoded apikey is asdf1234567890.
+The local hardcoded apikey is asdf1234567890.
 
 Test it out (in another terminal):
 
@@ -36,7 +36,7 @@ Note that Dockerfile has `CDM` binding port to `"-b 0.0.0.0:10000"` (because of 
 Now open your browser and go to http://localhost:10000/openapi/ui/ or 
 http://localhost:10000/swagger/ui/ to see the Swagger UI.
 
-The hardcoded apikey is asdf1234567890.
+The local hardcoded apikey is asdf1234567890.
 
 Test it out (in Powershell >= 7):
 
