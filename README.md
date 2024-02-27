@@ -28,15 +28,16 @@ Build the Docker image:
 
 `docker build -t template .`
 
-Run the image in a container:
+Run the image in a container:\
+Note that Dockerfile has `CDM` binding port to `"-b 0.0.0.0:10000"` (because of Render expecting that)
 
-`docker run -name template-app -p 8000:8000 template`
+`docker run --name templateapp -p 10000:10000 template`
 
-Now open your browser and go to http://localhost:8000/openapi/ui/ or 
-http://localhost:8000/swagger/ui/ to see the Swagger UI.
+Now open your browser and go to http://localhost:10000/openapi/ui/ or 
+http://localhost:10000/swagger/ui/ to see the Swagger UI.
 
 The hardcoded apikey is asdf1234567890.
 
 Test it out (in Powershell >= 7):
 
-`curl -X 'GET' 'http://localhost:8000/openapi/resources' -H 'accept: application/json' -H 'X-Auth: asdf1234567890'`
+`curl -X 'GET' 'http://localhost:10000/openapi/resources' -H 'accept: application/json' -H 'X-Auth: asdf1234567890'`
