@@ -11,4 +11,4 @@ RUN pip3 install --no-cache-dir -r requirements.txt --upgrade
 COPY app /app
 
 # You should use an ASGI server instead of a WSGI server. (see connexion doc)
-CMD ["gunicorn", "-k uvicorn.workers.UvicornWorker", "-b 0.0.0.0:8000", "app:app"]
+CMD ["gunicorn", "-k uvicorn.workers.UvicornWorker", "-b 0.0.0.0:10000", "app:app"]
