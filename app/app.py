@@ -69,8 +69,15 @@ def post_greeting(name: str) -> str:
     return f"Hello {name}"
 
 
-# get .env variable
-db_uri = os.environ['DB_URI']
+# get .env variables
+dialect = os.environ['DIALECT']
+db_user = os.environ['DB_USER']
+db_pwd = os.environ['DB_PWD']
+db_url = os.environ['DB_URL']
+db_name = os.environ['DB_NAME']
+
+# build uri
+db_uri = dialect + "://" + db_user + ":" + db_pwd + "@" + db_url + "/" + db_name
 
 
 # logging.basicConfig(level=logging.INFO)
